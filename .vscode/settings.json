@@ -1,0 +1,10 @@
+{
+	"files.exclude": {
+		"C:/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/.vscode": true,
+		"C:/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/Content": true,
+		"C:/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/DerivedDataCache": true,
+		"C:/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/Intermediate": true,
+		"C:/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/Saved": true
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}
