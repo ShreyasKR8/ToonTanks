@@ -2,9 +2,9 @@
 
 
 #include "TankGameModeBase.h"
+#include "Kismet/GameplayStatics.h"
 #include "ToonTanks/Pawns/PawnTank.h"
 #include "ToonTanks/Pawns/PawnTurret.h"
-#include "Kismet/GameplayStatics.h"
 #include "ToonTanks/PlayerControllers/PlayerControllerBase.h"
 
 void ATankGameModeBase::BeginPlay()
@@ -35,6 +35,7 @@ void ATankGameModeBase::ActorDied(AActor* DeadActor)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("A Pawn died"));
 		DestroyedTurret->HandleDestruction();
+        DestroyedTurret = NULL;
 
 		if(--TargetTurrets == 0)
 		{

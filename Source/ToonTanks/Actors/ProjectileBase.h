@@ -42,7 +42,7 @@ private:
 	USoundBase* LaunchSound;
 
 	UPROPERTY(EditAnywhere, Category = "Effects")
-	TSubclassOf<UCameraShake> HitShake;
+	TSubclassOf<class UCameraShake> HitCameraShakeClass;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);

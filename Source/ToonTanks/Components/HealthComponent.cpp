@@ -11,8 +11,6 @@ UHealthComponent::UHealthComponent()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = false;
-
-	// ...
 }
 
 
@@ -22,6 +20,7 @@ void UHealthComponent::BeginPlay()
 	Super::BeginPlay();
 
 	Health = DefaultHealth;//implement different variable for tank and turret.
+    UE_LOG(LogTemp, Warning, TEXT("Health of tank: %f"), Health)
 	
 	GameModeRef = Cast<ATankGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
@@ -35,7 +34,8 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 		return;
 	}
 
-	Health = FMath::Clamp(Health - Damage, 0.0f, DefaultHealth); // Clamps X to be between Min and Max, inclusive
+    // Clamp X between Min and Max, inclusive
+	Health = FMath::Clamp(Health - Damage, 0.0f, DefaultHealth); // Clamp( const T X, const T Min, const T Max )
 	UE_LOG(LogTemp, Warning, TEXT("Health of %s = %f"), *DamagedActor->GetName(), Health);
 
 	if(Health <= 0)
@@ -49,4 +49,9 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 			UE_LOG(LogTemp, Warning, TEXT("Health Component has no reference to GameMode"));
 		}
 	}
+}
+
+float UHealthComponent::GetHealthPercent() const
+{
+    return Health / DefaultHealth;
 }

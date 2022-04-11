@@ -17,13 +17,16 @@ class TOONTANKS_API ATankGameModeBase : public AGameModeBase
 
 private:
 	APawnTank* PlayerTank;
+
 	int32 TargetTurrets = 0;
+
 	APlayerControllerBase* PlayerControllerRef;
 
 	int32 GetTargetTurretCount();
-	void HandleGameStart();
-	void HandleGameOver(bool PlayerWon);
 
+	void HandleGameStart();
+
+	void HandleGameOver(bool PlayerWon);
 
 public:
 
@@ -35,8 +38,10 @@ protected:
 	int32 StartDelay = 3;
 
 	virtual void BeginPlay() override;
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void GameStart();
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void GameOver(bool PlayerWon);	
 };

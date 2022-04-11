@@ -10,18 +10,9 @@ void APawnTurret::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	// GetWorld()->GetTimerManager().SetTimer(FireRateTimerHandle, this, &APawnTurret::CheckFireCondition, FireRate, true)
-	GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &APawnTurret::CheckFireCondition, FireRate, true);
+    GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &APawnTurret::CheckFireCondition, FireRate, true);
 
 	PlayerPawn = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
-}
-
-void APawnTurret::HandleDestruction() 
-{
-	Super::HandleDestruction();
-	SetActorHiddenInGame(true);
-    SetActorTickEnabled(false);
-	UE_LOG(LogTemp, Warning, TEXT("A turret died"));
 }
 
 // Called every frame
@@ -29,20 +20,30 @@ void APawnTurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(!PlayerPawn || ReturnDistanceToPlayer() > FireRange)
+    if(!PlayerPawn)
+    {
+        return;
+    }
+	if(ReturnDistanceToPlayer() <= FireRange)
 	{
+	    RotateTurret(PlayerPawn->GetActorLocation());  //RotateTurret(FVector LookAtTarget) defined in PawnBase.cpp
 		return;
 	}
+}
 
-	RotateTurret(PlayerPawn->GetActorLocation());
+void APawnTurret::HandleDestruction() 
+{
+	Super::HandleDestruction();
+
+    Destroy();
+
+	UE_LOG(LogTemp, Warning, TEXT("A turret died"));
 }
 
 void APawnTurret::CheckFireCondition() 
 {
-	//If Player == NULL || is dead, then stop
 	if(!PlayerPawn || !(PlayerPawn->GetIsPlayerAlive()))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("A tt"));
 		return;
 	}
 	//If Player is in range, then Fire!
@@ -61,4 +62,19 @@ float APawnTurret::ReturnDistanceToPlayer()
 
 	float Distance = FVector::Dist(PlayerPawn->GetActorLocation(), GetActorLocation());
 	return Distance;
+}
+
+int32 APawnTurret::GetTurretsInRangeCount()
+{
+    TurretsInRangeCount = 0;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), APawnTurret::StaticClass(), Turrets);
+    for(int32 Index = 0; Index < Turrets.Num(); ++Index)
+    {
+        TurretActor = Cast<APawnTurret>(Turrets[Index]);
+        if(TurretActor->ReturnDistanceToPlayer() <= TurretActor->FireRange)
+        {
+            TurretsInRangeCount++;
+        }
+    }
+    return TurretsInRangeCount;
 }

@@ -17,22 +17,36 @@ class TOONTANKS_API APawnTurret : public APawnBase
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	float FireRate = 2.0f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
-	float FireRange = 500.0f;
 
 	FTimerHandle FireRateTimerHandle;
+
+    UPROPERTY(VisibleAnywhere)
 	APawnTank * PlayerPawn;
+
+    UPROPERTY(VisibleAnywhere)
+    APawnTurret* TurretActor;
+
+    TArray<AActor*> Turrets;
+
+    int32 TurretsInRangeCount = 0;
 
 	void CheckFireCondition();
 
-	float ReturnDistanceToPlayer();
+    void RepairTank();
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 	virtual void HandleDestruction() override;
+	
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+	float FireRange = 500.0f;
+    
+	float ReturnDistanceToPlayer();
+
+    int32 GetTurretsInRangeCount();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
 
 };

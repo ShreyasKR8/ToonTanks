@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
 #include "ToonTanks/Actors/ProjectileBase.h"
@@ -27,10 +26,9 @@ APawnBase::APawnBase()
 
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 
-
 }
 
-void APawnBase::RotateTurret(FVector LookAtTarget) 
+void APawnBase::RotateTurret(FVector LookAtTarget)
 {
 	//Update TurretMesh rotation to face towards the LookAt Target passed in from child classes.
 	//TurretMesh->SetWorldRotation()....
@@ -44,8 +42,6 @@ void APawnBase::RotateTurret(FVector LookAtTarget)
 void APawnBase::Fire() 
 {
 	//Get ProjectileSpawnPoint Location && Rotation -> Spawn Projectile class at location firing towards rotation.
-
-
 	if(ProjectileClass)
 	{
 		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
@@ -60,14 +56,21 @@ void APawnBase::HandleDestruction()
 {
 	//Universal functionality
 	//Play death effects particle, sound and camera shake.
-	UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticle, GetActorLocation());
-	UGameplayStatics::SpawnSoundAtLocation(this, DeathSound, GetActorLocation());
+    if(DeathParticle)
+    {
+	    UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticle, GetActorLocation());
+    }
+    if(DeathSound)
+    {
+        UGameplayStatics::SpawnSoundAtLocation(this, DeathSound, GetActorLocation());
+    }
 	
-	GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(DeathShake);
-
-
+    if(DeathCameraShakeClass)
+    {
+        //UE 4.25 - ClientPlayCameraShake; UE 4.26+ - ClientStartCameraShake;
+	    GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(DeathCameraShakeClass);
+    }
 	//Then do child overrides
 	//PawnTurret-Inform GameMode Turret died -> Then Destroy() self.
-
 	//PawnTank - Inform GameMode Player dies -> Then hide() all components && stop movement input.
 }

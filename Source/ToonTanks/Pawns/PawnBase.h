@@ -19,15 +19,16 @@ private:
 	//Components
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCapsuleComponent* CapsuleComp;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* BaseMesh;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* TurretMesh;
+    
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	UHealthComponent* HealthComponent;
 	
 	// Projectile variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
@@ -40,22 +41,27 @@ private:
 	USoundBase* DeathSound;
 
 	UPROPERTY(EditAnywhere, Category = "Effects")
-	TSubclassOf<UCameraShake> DeathShake;
+	TSubclassOf<class UCameraShake> DeathCameraShakeClass;
 
 public:
 	// Sets default values for this pawn's properties
 	APawnBase();
 
 	void PawnDestroyed();
+
 	virtual void HandleDestruction();
 
 protected: 
+    //To make it accessible to child classes.
+	
 
 	void RotateTurret(FVector LookAtTarget);
 
+    FRotator CounterRotation;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UHealthComponent* HealthComponent;
+
 	void Fire();
 
-
-
 };
-

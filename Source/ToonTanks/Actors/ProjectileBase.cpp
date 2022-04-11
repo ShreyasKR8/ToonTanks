@@ -48,9 +48,20 @@ void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 	if(OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
-		UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation());
-		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
-		GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(HitShake);
+        if(HitParticle)
+        {
+		    UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation());
+        }
+        if(HitSound)
+        {
+		    UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+        }
+        if(HitCameraShakeClass)
+        {
+            //UE 4.25 - ClientPlayCameraShake; UE 4.26+ - ClientStartCameraShake;
+		    GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(HitCameraShakeClass);
+        }
+
 		Destroy();
 		UE_LOG(LogTemp, Warning, TEXT("Damage applied"));
 	}
