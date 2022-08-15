@@ -20,7 +20,7 @@ void UHealthComponent::BeginPlay()
 	Super::BeginPlay();
 
 	Health = DefaultHealth;//implement different variable for tank and turret.
-    UE_LOG(LogTemp, Warning, TEXT("Health of tank: %f"), Health)
+    // UE_LOG(LogTemp, Warning, TEXT("Health of tank: %f"), Health)
 	
 	GameModeRef = Cast<ATankGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
@@ -36,7 +36,7 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 
     // Clamp X between Min and Max, inclusive
 	Health = FMath::Clamp(Health - Damage, 0.0f, DefaultHealth); // Clamp( const T X, const T Min, const T Max )
-	UE_LOG(LogTemp, Warning, TEXT("Health of %s = %f"), *DamagedActor->GetName(), Health);
+	// UE_LOG(LogTemp, Warning, TEXT("Health of %s = %f"), *DamagedActor->GetName(), Health);
 
 	if(Health <= 0)
 	{

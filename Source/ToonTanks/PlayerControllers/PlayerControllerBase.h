@@ -16,5 +16,8 @@ class TOONTANKS_API APlayerControllerBase : public APlayerController
 	
 public:
 
+    FTimerHandle FTimer;
 	void SetPlayerEnabledState(bool SetPlayerEnabled);
+
+    virtual void GameHasEnded(class AActor* EndGameFocus = nullptr, bool bIsWinner = false) override;
 };

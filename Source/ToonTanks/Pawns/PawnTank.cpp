@@ -59,6 +59,7 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     PlayerInputComponent->BindAxis("Turn", this, &APawnTank::CalculateRotateInput);
     // PlayerInputComponent->BindAxis("RotateTurret", this, &APawnTank::RotateView);
     PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APawnTank::Fire);
+    // PlayerInputComponent->BindAction("Quit", IE_Presses), this, &AController::GameOver);
 }
 
 void APawnTank::CalculateMoveInput(float Value) 
@@ -96,7 +97,7 @@ void APawnTank::Rotate()
 void APawnTank::HandleDestruction() 
 {
     Super::HandleDestruction();
-    UE_LOG(LogTemp, Warning, TEXT("A tank died"));
+    // UE_LOG(LogTemp, Warning, TEXT("A tank died"));
     //Hide Player, Todo- Create new function to handle this.
     bIsPlayerAlive = false;
     
@@ -111,7 +112,7 @@ void APawnTank::RepairTank()
     if(TurretActor && GetTankHealth() <= 180.f)
     {
         TurretsInRangeCount = TurretActor->GetTurretsInRangeCount();
-        UE_LOG(LogTemp, Warning, TEXT("countinrange: %d"), TurretsInRangeCount);
+        // UE_LOG(LogTemp, Warning, TEXT("countinrange: %d"), TurretsInRangeCount);
         if(TurretsInRangeCount == 0)
         {
             TankHealth += 20.f;

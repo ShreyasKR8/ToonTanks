@@ -26,7 +26,7 @@ private:
 
 	void HandleGameStart();
 
-	void HandleGameOver(bool PlayerWon);
+	void HandleGameOver(bool bPlayerWon);
 
 public:
 

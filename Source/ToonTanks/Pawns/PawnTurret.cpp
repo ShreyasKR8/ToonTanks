@@ -37,7 +37,8 @@ void APawnTurret::HandleDestruction()
 
     Destroy();
 
-	UE_LOG(LogTemp, Warning, TEXT("A turret died"));
+	// UE_LOG(LogTemp, Warning, TEXT("A turret died"));
+
 }
 
 void APawnTurret::CheckFireCondition() 
@@ -68,6 +69,7 @@ int32 APawnTurret::GetTurretsInRangeCount()
 {
     TurretsInRangeCount = 0;
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), APawnTurret::StaticClass(), Turrets);
+    // UE_LOG(LogTemp, Warning, TEXT("TurretsTotal: %d"), Turrets.Num())
     for(int32 Index = 0; Index < Turrets.Num(); ++Index)
     {
         TurretActor = Cast<APawnTurret>(Turrets[Index]);

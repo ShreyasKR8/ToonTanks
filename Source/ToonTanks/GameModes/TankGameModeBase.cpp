@@ -2,10 +2,13 @@
 
 
 #include "TankGameModeBase.h"
+#include "TimerManager.h"
+#include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 #include "ToonTanks/Pawns/PawnTank.h"
 #include "ToonTanks/Pawns/PawnTurret.h"
 #include "ToonTanks/PlayerControllers/PlayerControllerBase.h"
+#include "GameFramework/PlayerController.h"
 
 void ATankGameModeBase::BeginPlay()
 {
@@ -33,7 +36,7 @@ void ATankGameModeBase::ActorDied(AActor* DeadActor)
 	}
 	else if(APawnTurret* DestroyedTurret = Cast<APawnTurret>(DeadActor))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("A Pawn died"));
+		// UE_LOG(LogTemp, Warning, TEXT("A Pawn died"));
 		DestroyedTurret->HandleDestruction();
         DestroyedTurret = NULL;
 
@@ -63,12 +66,17 @@ void ATankGameModeBase::HandleGameStart()
 	}
 }
 
-void ATankGameModeBase::HandleGameOver(bool PlayerWon)
+void ATankGameModeBase::HandleGameOver(bool bPlayerWon)
 {
-	GameOver(PlayerWon);
+    // FTimerHandle FTimer;
+    for(AController* Controller : TActorRange<AController>(GetWorld()))    {
+        Controller->GameHasEnded(Controller->GetPawn(), bPlayerWon);
+    }
+	GameOver(bPlayerWon);
 	//If the Player has destroyed all the turrets, show - win:)
 	//else if Turret destroyed the Player, show - lose:/
 	//Call blueprint version GameOver(bool)
+    // GetWorldTimerManager().SetTimer(FTimer, this, &APlayerController::RestartLevel, 3.f);
 }
 
 int32 ATankGameModeBase::GetTargetTurretCount()

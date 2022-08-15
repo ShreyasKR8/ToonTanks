@@ -7,7 +7,6 @@
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"
 
-
 // Sets default values
 AProjectileBase::AProjectileBase()
 {
@@ -29,7 +28,7 @@ AProjectileBase::AProjectileBase()
 }
 
 // Called when the game starts or when spawned
-void AProjectileBase::BeginPlay()
+void AProjectileBase::BeginPlay() 
 {
 	Super::BeginPlay();
 	
