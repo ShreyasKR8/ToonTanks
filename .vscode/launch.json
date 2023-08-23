@@ -5,7 +5,7 @@
 			"name": "ToonTanks (Debug)",
 			"request": "launch",
 			"preLaunchTask": "ToonTanks Win64 Debug Build",
-			"program": "C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-Debug.exe",
+			"program": "D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-Debug.exe",
 			"args": [
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
@@ -18,7 +18,7 @@
 			"name": "ToonTanks (DebugGame)",
 			"request": "launch",
 			"preLaunchTask": "ToonTanks Win64 DebugGame Build",
-			"program": "C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
+			"program": "D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
 			"args": [
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
@@ -31,7 +31,7 @@
 			"name": "ToonTanks (Development)",
 			"request": "launch",
 			"preLaunchTask": "ToonTanks Win64 Development Build",
-			"program": "C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4.exe",
+			"program": "D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4.exe",
 			"args": [
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
@@ -44,7 +44,7 @@
 			"name": "ToonTanks (Shipping)",
 			"request": "launch",
 			"preLaunchTask": "ToonTanks Win64 Shipping Build",
-			"program": "C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
+			"program": "D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
 			"args": [
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
@@ -57,7 +57,7 @@
 			"name": "ToonTanks (Test)",
 			"request": "launch",
 			"preLaunchTask": "ToonTanks Win64 Test Build",
-			"program": "C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-Test.exe",
+			"program": "D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\Binaries\\Win64\\UE4-Win64-Test.exe",
 			"args": [
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
@@ -72,7 +72,7 @@
 			"preLaunchTask": "ToonTanksEditor Win64 Debug Build",
 			"program": "C:\\Program Files\\Epic Games\\UE_4.25\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe",
 			"args": [
-				"C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject"
+				"D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject"
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
 			"stopAtEntry": false,
@@ -86,7 +86,7 @@
 			"preLaunchTask": "ToonTanksEditor Win64 DebugGame Build",
 			"program": "C:\\Program Files\\Epic Games\\UE_4.25\\Engine\\Binaries\\Win64\\UE4Editor-Win64-DebugGame.exe",
 			"args": [
-				"C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject"
+				"D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject"
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
 			"stopAtEntry": false,
@@ -100,7 +100,7 @@
 			"preLaunchTask": "ToonTanksEditor Win64 Development Build",
 			"program": "C:\\Program Files\\Epic Games\\UE_4.25\\Engine\\Binaries\\Win64\\UE4Editor.exe",
 			"args": [
-				"C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject"
+				"D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject"
 			],
 			"cwd": "C:\\Program Files\\Epic Games\\UE_4.25",
 			"stopAtEntry": false,
@@ -117,7 +117,7 @@
 			"args": [
 				"-projectfiles",
 				"-vscode",
-				"-project=\"C:\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject\"",
+				"-project=\"D:\\Unreal Engine 4\\1.UE4 projects\\ToonTanksProject\\ToonTanksProjectSetup_4.25\\ToonTanks\\ToonTanks.uproject\"",
 				"-game",
 				"-engine"
 			],
